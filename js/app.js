@@ -9,13 +9,39 @@ navToggle.addEventListener("click", () => {
 
 // CRUD - gerenciamento de livros
 
-// seleção dos elementos do formulário
-const title = document.getElementById("title");
-const author = document.getElementById("author");
-const year = document.getElementById("year");
-const pages = document.getElementById("pages");
-const genre = document.getElementById("genre");
-const description = document.getElementById("description");
-const bookList = document.querySelector(".book-list");
+// adicionando um livro
+const form = document.querySelector(".book-form");
+const alert = document.querySelector(".alert");
 
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
 
+  const title = document.getElementById("title").value;
+  const author = document.getElementById("author").value;
+  const pages = document.getElementById("pages").value;
+  const genre = document.getElementById("genre").value;
+  const year = document.getElementById("year").value;
+  const description = document.getElementById("description").value;
+
+  const book = { title, author, pages, genre, year, description };
+
+  const books = JSON.parse(localStorage.getItem("books")) || [];
+
+  books.push(book);
+
+  localStorage.setItem("books", JSON.stringify(books));
+
+  form.reset();
+
+  displayAlert("Livro adicionado com sucesso", "success");
+});
+
+// função para aparecer o alerta ao usuário
+function displayAlert(text, action) {
+  alert.textContent = text; // define o texto do alerta
+  alert.classList.add(`alert-${action}`); // aplica estilo ao alerta
+  setTimeout(function () {
+    alert.textContent = ""; // remove o texto após 1 segundo
+    alert.classList.remove(`alert-${action}`); // remove o estilo
+  }, 2000);
+}
