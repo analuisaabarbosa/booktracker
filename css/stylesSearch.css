@@ -263,29 +263,75 @@ input[type="text"], select {
 }
 
 .search-results h3 {
+  margin-top: 10px;
   font-family: "Montserrat", sans-serif;
 }
 
 .book-list {
-  display: grid;
+  display: center;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
 .book-item {
+  font-family: "Montserrat", sans-serif;
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.book-item h4 {
+.book-item h3 {
   font-size: 1.2rem;
   margin-bottom: 10px;
+}
+
+.book-item p {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.edit-btn, .delete-btn, .clear-btn {
+  margin-top: 5px;
+  background-color: #fc85c0;
+  font-weight: bold;
+  color: #292325;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.clear-btn {
+  margin-top: 20px;
+  background-color: #fc85c0;
+  font-weight: bold;
+  color: #292325;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .book-item p {
   font-size: 0.9rem;
   color: #555;
 }
- 
+
+/* estilo para alertas de erro */
+.alert-danger {
+  color: #721c24;
+  background: #f8d7da;
+}
+
+/* estilo para alertas de sucesso */
+.alert-success {
+  color: #155724;
+  background: #d4edda;
+}
