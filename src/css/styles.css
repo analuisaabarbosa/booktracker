@@ -21,7 +21,7 @@ body {
     background: #FFFFFF;
     border-radius: 0 0 2rem 2rem;
     margin: 1.5rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     position: sticky;
     top: 1.5rem;
     z-index: 100;
@@ -129,4 +129,38 @@ main {
     position: absolute;
     top: 1.5rem;
     right: 1.5rem;
+}
+
+.filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: linear-gradient(45deg, #FF6B9D, #E91E63);
+    color: #FFFFFF;
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.filter-btn:hover, .filter-btn.active {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+.filter-btn img {
+    width: auto;
+    height: 2em;
 }
