@@ -229,6 +229,126 @@ main {
     gap: 1rem;
 }
 
+.book-card {
+    background: #FFFFFF;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.book-card:hover {
+    transform: translate(-4px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+.book-cover-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-cover {
+    width: 50%;
+    height: 200px;
+    padding: 1rem;
+}
+
+.book-info {
+    padding: 1.5rem;
+}
+
+.book-info h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.book-author {
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.book-description {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.book-genre {
+    display: inline-block;
+    background: linear-gradient(45deg, #3498DB, #9C27B0);
+    color: #FFFFFF;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.book-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.book-actions button {
+    flex: 1;
+    min-width: 80px;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    font-size: 0.75rem;
+    font-weight: 500;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.book-actions button img {
+    width: auto;
+    height: 2em;
+}
+
+.btn-read {
+    background: #2ECC71;
+    color: #FFFFFF
+}
+
+.btn-unread {
+    background: #FF9500;
+    color: #FFFFFF
+}
+
+.btn-edit {
+    background: #3498DB;
+    color: #FFFFFF;
+}
+
+.btn-delete {
+    background: #E74C3C;
+    color: #FFFFFF;
+}
+
+.book-actions button:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+}
+
 /*empty state*/
 .empty-state {
     text-align: center;
@@ -236,6 +356,10 @@ main {
     background: #FFFFFF;
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.empty-state.hidden {
+    display: none;
 }
 
 .empty-icon {
