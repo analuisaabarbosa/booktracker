@@ -9,6 +9,28 @@ export function loadLibrary() {
     return data ? JSON.parse(data) : [];
 }
 
+export function addBookToLibrary(book) {
+    const library = loadLibrary();
+    const bookId = book.id || book.title + (book.authors?.[0] || '');
+    const exits = library.some(b => b.id === bookId);
+    if (exits) {
+        alert('Livro já adicionado à biblioteca');
+        return;
+    }
+    const bookToAdd = {
+        id: bookId,
+        title: book.title || 'Sem título',
+        authors: book.authors || ['Autor desconhecido'],
+        description: book.description || 'Sem descrição disponível',
+        categories: book.categories || ['Gênero desconhecido'],
+        thumbnail: book.imageLinks?.thumbnail || 'https://via.placeholder.com/100x150?text=No+Cover',
+        addedAt: Date.now()
+    }
+    library.push(bookToAdd);
+    saveLibrary(library);
+    return bookToAdd;
+}
+
 export function getDefaultSettings() {
     return {
         viewMode: 'grid', // 'grid' or 'list'
