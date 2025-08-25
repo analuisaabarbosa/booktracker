@@ -463,7 +463,10 @@ dialog::backdrop {
     flex: 1;
 }
 
-
+.modal-header h2 img {
+    width: auto;
+    height: 1em;
+}
 
 .header-left img {
     width: auto;
