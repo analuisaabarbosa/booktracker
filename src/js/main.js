@@ -1,9 +1,7 @@
 import { initEvents } from './events.js';
 import { renderLibrary } from './ui.js';
 
-function main() {
+document.addEventListener('DOMContentLoaded', () => {
     initEvents();
     renderLibrary();
-}
-
-main();
+});

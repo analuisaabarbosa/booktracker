@@ -31,6 +31,18 @@ export function addBookToLibrary(book) {
     return bookToAdd;
 }
 
+export function removeBookFromLibrary(bookId) {
+    let library = loadLibrary();
+    const initialLength = library.length;
+    library = library.filter(book => book.id !== bookId);
+
+    if (library.length < initialLength) {
+        saveLibrary(library);
+        return true;
+    }
+    return false;
+}
+
 export function getDefaultSettings() {
     return {
         viewMode: 'grid', // 'grid' or 'list'

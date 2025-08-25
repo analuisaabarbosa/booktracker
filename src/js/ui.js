@@ -1,5 +1,28 @@
-import { loadLibrary } from './storage.js';
+import { loadLibrary, removeBookFromLibrary } from './storage.js';
 import { addBookToLibrary } from './storage.js';
+import { getDefaultSettings } from './storage.js';
+
+let bookToDeleteId = null;
+
+export function confirmDeleteBook(bookId) {
+    const deleteModal = document.getElementById('deleteModal');
+    bookToDeleteId = bookId;
+    deleteModal.showModal();
+}
+
+export function deleteBook() {
+    if (bookToDeleteId !== null) {
+        removeBookFromLibrary(bookToDeleteId);
+        renderLibrary()
+        closeDeleteModal();
+    }
+}
+
+export function closeDeleteModal() {
+    const deleteModal = document.getElementById('deleteModal');
+    deleteModal.close();
+    bookToDeleteId = null;
+}
 
 export function createBookInSearch(book) {
     const card = document.createElement('div');
@@ -58,7 +81,7 @@ export function createBookInSearch(book) {
     return card;
 }
 
-export function renderLibrary(view = 'grid') {
+export function renderLibrary(view = getDefaultSettings().viewMode) {
     const library = loadLibrary();
     const container = document.getElementById('booksContainer');
     const emptyState = document.getElementById('emptyState');
@@ -103,6 +126,11 @@ export function renderLibrary(view = 'grid') {
                 </div >
             </div >
         `
+
+        const deleteBtn = li.querySelector('.btn-delete');
+        deleteBtn.addEventListener('click', () => confirmDeleteBook(book.id));
+
+
         container.appendChild(li);
     })
 }
