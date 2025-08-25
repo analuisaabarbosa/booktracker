@@ -43,13 +43,20 @@ export function removeBookFromLibrary(bookId) {
     return false;
 }
 
+export function updateBookInLibrary(updatedBook) {
+    let library = loadLibrary();
+    const bookIndex = library.findIndex(book => book.id === updatedBook.id);
+
+    if (bookIndex !== -1) {
+        library[bookIndex] = { ...library[bookIndex], ...updatedBook };
+        saveLibrary(library);
+        return true;
+    }
+    return false
+}
+
 export function getDefaultSettings() {
     return {
         viewMode: 'grid', // 'grid' or 'list'
-        sortBy: 'dateAdded', // 'dateAdded', 'title', 'author'
-        sortOrder: 'desc', // 'asc' or 'desc'
-        booksPerPage: 20,
-        showDescriptions: true,
-        autoBackup: false
     };
 }

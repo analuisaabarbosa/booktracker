@@ -1,28 +1,11 @@
-import { loadLibrary, removeBookFromLibrary } from './storage.js';
-import { addBookToLibrary } from './storage.js';
-import { getDefaultSettings } from './storage.js';
+import { loadLibrary, addBookToLibrary, removeBookFromLibrary, updateBookInLibrary, getDefaultSettings } from './storage.js';
 
+let bookToEditId = null;
 let bookToDeleteId = null;
 
-export function confirmDeleteBook(bookId) {
-    const deleteModal = document.getElementById('deleteModal');
-    bookToDeleteId = bookId;
-    deleteModal.showModal();
-}
-
-export function deleteBook() {
-    if (bookToDeleteId !== null) {
-        removeBookFromLibrary(bookToDeleteId);
-        renderLibrary()
-        closeDeleteModal();
-    }
-}
-
-export function closeDeleteModal() {
-    const deleteModal = document.getElementById('deleteModal');
-    deleteModal.close();
-    bookToDeleteId = null;
-}
+const addBookModal = document.getElementById('addBookModal');
+const searchResults = document.getElementById('searchResults');
+const searchInput = document.getElementById('searchInput');
 
 export function createBookInSearch(book) {
     const card = document.createElement('div');
@@ -81,6 +64,66 @@ export function createBookInSearch(book) {
     return card;
 }
 
+export function editBook(bookId) {
+    const editModal = document.getElementById('editBookModal');
+    const book = loadLibrary().find(b => b.id === bookId);
+
+    if (book) {
+        bookToEditId = bookId;
+        document.getElementById('editTitle').value = book.title;
+        document.getElementById('editAuthor').value = book.authors.join(', ');
+        document.getElementById('editDescription').value = book.description;
+        document.getElementById('editGenre').value = book.categories?.[0] || '';
+        editModal.showModal();
+    }
+}
+
+export function saveEditedBook() {
+    const title = document.getElementById('editTitle').value;
+    const authors = document.getElementById('editAuthor').value.split(',').map(s => s.trim());
+    const description = document.getElementById('editDescription').value;
+    const genre = document.getElementById('editGenre').value;
+
+    if (bookToEditId && title && authors.length > 0) {
+        const updatedBook = {
+            id: bookToEditId,
+            title,
+            authors,
+            description,
+            categories: [genre],
+        };
+        updateBookInLibrary(updatedBook);
+        renderLibrary();
+        closeEditModal();
+    }
+}
+
+export function closeEditModal() {
+    const editModal = document.getElementById('editBookModal');
+    editModal.close();
+    bookToEditId = null;
+}
+
+export function confirmDeleteBook(bookId) {
+    const deleteModal = document.getElementById('deleteModal');
+    bookToDeleteId = bookId;
+    deleteModal.showModal();
+}
+
+export function deleteBook() {
+    if (bookToDeleteId !== null) {
+        removeBookFromLibrary(bookToDeleteId);
+        renderLibrary()
+        closeDeleteModal();
+    }
+}
+
+export function closeDeleteModal() {
+    const deleteModal = document.getElementById('deleteModal');
+    deleteModal.close();
+    bookToDeleteId = null;
+}
+
 export function renderLibrary(view = getDefaultSettings().viewMode) {
     const library = loadLibrary();
     const container = document.getElementById('booksContainer');
@@ -111,15 +154,15 @@ export function renderLibrary(view = getDefaultSettings().viewMode) {
                 <p class="book-description">${book.description || ''}</p>
                 <span class="book-genre">${book.categories[0]}</span>
                 <div class="book-actions">
-                    <button class="btn-read" onclick="toggleReadStatus(${book.id})">
+                    <button class="btn-read">
                         <img src="./src/assets/icons/check-solid-full.svg" />
                         Marcar como lido
                     </button>
-                    <button class="btn-edit" onclick="editBook(${book.id})">
+                    <button class="btn-edit">
                         <img src="./src/assets/icons/pen-to-square-solid-full.svg" />
                         Editar
                     </button >
-                    <button class="btn-delete" onclick="confirmDeleteBook(${book.id})">
+                    <button class="btn-delete">
                         <img src="./src/assets/icons/trash-solid-full.svg" />
                         Deletar
                     </button>
@@ -127,9 +170,11 @@ export function renderLibrary(view = getDefaultSettings().viewMode) {
             </div >
         `
 
+        const editBtn = li.querySelector('.btn-edit');
+        editBtn.addEventListener('click', () => editBook(book.id));
+
         const deleteBtn = li.querySelector('.btn-delete');
         deleteBtn.addEventListener('click', () => confirmDeleteBook(book.id));
-
 
         container.appendChild(li);
     })

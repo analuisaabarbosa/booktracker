@@ -1,6 +1,5 @@
 import { searchBook } from './api.js';
-import { createBookInSearch } from './ui.js';
-import { renderLibrary, deleteBook, closeDeleteModal } from './ui.js';
+import { renderLibrary, createBookInSearch, saveEditedBook, closeEditModal, deleteBook, closeDeleteModal } from './ui.js';
 
 // --- abrir / fechar modal de adicionar livro --- 
 const addBookBtn = document.getElementById('addBookBtn');
@@ -62,5 +61,16 @@ export function initEvents() {
         confirmDeleteBtn.addEventListener('click', deleteBook);
         cancelDeleteBtn.addEventListener('click', closeDeleteModal);
         closeDeleteModalBtn.addEventListener('click', closeDeleteModal);
+    }
+
+    // --- modal de edição ---
+    const saveEditBtn = document.getElementById('saveEdit');
+    const cancelEditBtn = document.getElementById('cancelEdit');
+    const closeEditModalBtn = document.getElementById('closeEditModal');
+
+    if (saveEditBtn && cancelEditBtn && closeEditModalBtn) {
+        saveEditBtn.addEventListener('click', saveEditedBook);
+        cancelEditBtn.addEventListener('click', closeEditModal);
+        closeEditModalBtn.addEventListener('click', closeEditModal);
     }
 }
