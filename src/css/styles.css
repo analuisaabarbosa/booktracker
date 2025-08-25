@@ -598,22 +598,6 @@ dialog::backdrop {
 }
 
 /* button styles */
-.btn-primary {
-    background: linear-gradient(45deg, #FF6B9D, #E91E63);
-    color: #FFFFFF;
-    padding: 1rem 1.5rem;
-    border: none;
-    border-radius: 8px;
-    font-weight: 500;
-    font-size: 1rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
-
 .btn-secondary {
     background: #FFFFFF;
     color: #7F8C8D;
@@ -653,10 +637,41 @@ dialog::backdrop {
     transform: translateY(-1px);
 }
 
+/* form styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: 2px solid #FF6B9D;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #E91E63;
+}
+
 .form-actions {
     display: flex;
-    gap: 0.5rem;
-    margin-top: 1.5rem;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 2rem;
 }
 
 .form-actions img {
