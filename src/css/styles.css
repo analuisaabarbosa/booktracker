@@ -349,6 +349,30 @@ main {
     opacity: 0.9;
 }
 
+/*list view styles*/
+.books-list .book-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1.5rem;
+}
+
+.books-list .book-cover {
+    width: 200px;
+    height: 200px;
+    margin-right: 1.5rem;
+    flex-shrink: 0;
+}
+
+.books-list .book-actions {
+    min-width: 100px;
+}
+
+.books-list .book-info {
+    flex: 1;
+    padding: 0;
+}
+
 /*empty state*/
 .empty-state {
     text-align: center;
@@ -438,6 +462,8 @@ dialog::backdrop {
     font-weight: 600;
     flex: 1;
 }
+
+
 
 .header-left img {
     width: auto;
@@ -569,6 +595,73 @@ dialog::backdrop {
     width: auto;
     height: 2rem;
     margin-right: 0;
+}
+
+/* button styles */
+.btn-primary {
+    background: linear-gradient(45deg, #FF6B9D, #E91E63);
+    color: #FFFFFF;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-secondary {
+    background: #FFFFFF;
+    color: #7F8C8D;
+    border: 1px solid #7F8C8D;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-secondary:hover {
+    transform: translateY(-1px);
+}
+
+.btn-danger {
+    background: #E74C3C;
+    color: #FFFFFF;
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-danger:hover {
+    background: #c0392b;
+    transform: translateY(-1px);
+}
+
+.form-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.form-actions img {
+    width: auto;
+    height: 1.5em;
 }
 
 /* animations */
