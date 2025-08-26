@@ -47,7 +47,7 @@ Como o projeto usa módulos JavaScript, ele precisa ser servido por um servidor 
 Após iniciar o servidor, abra seu navegador e acesse http://localhost:8000.
 
 ### Ou, se você preferir testar a versão em produção, pode usar o link de deploy:
-Acesse a aplicação diretamente pelo GitHub Pages: [BookTracker](https://analuisaabarbosa.github.io/book_tracker/).
+Acesse a aplicação diretamente pelo GitHub Pages: [BookTracker](https://analuisaabarbosa.github.io/booktracker/).
 
 
 Uso
