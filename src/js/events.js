@@ -1,5 +1,5 @@
 import { searchBook } from './api.js';
-import { renderLibrary, createBookInSearch, saveEditedBook, closeEditModal, deleteBook, closeDeleteModal } from './ui.js';
+import { renderLibrary, createBookInSearch, saveEditedBook, closeEditModal, deleteBook, closeDeleteModal, filterLibrary } from './ui.js';
 
 // --- abrir / fechar modal de adicionar livro --- 
 const addBookBtn = document.getElementById('addBookBtn');
@@ -73,4 +73,15 @@ export function initEvents() {
         cancelEditBtn.addEventListener('click', closeEditModal);
         closeEditModalBtn.addEventListener('click', closeEditModal);
     }
+
+    // --- filtros de exibição ---
+    const filterButtons = document.querySelectorAll('.filter-btn');
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            filterLibrary(btn.dataset.filter);
+        });
+    });
 }

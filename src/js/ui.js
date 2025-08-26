@@ -7,6 +7,13 @@ const addBookModal = document.getElementById('addBookModal');
 const searchResults = document.getElementById('searchResults');
 const searchInput = document.getElementById('searchInput');
 
+let currentFilter = 'all';
+
+export function filterLibrary(filter) {
+    currentFilter = filter;
+    renderLibrary();
+}
+
 export function renderStats() {
     const library = loadLibrary();
 
@@ -157,12 +164,24 @@ export function renderLibrary(view = getDefaultSettings().viewMode) {
     const library = loadLibrary();
     const container = document.getElementById('booksContainer');
     const emptyState = document.getElementById('emptyState');
+
+    const filteredLibrary = library.filter(book => {
+        if (currentFilter === 'read') {
+            return book.isRead;
+        } else if (currentFilter === 'unread') {
+            return !book.isRead;
+        } else {
+            return true;
+        }
+    });
+
     container.querySelectorAll(`li:not(#emptyState)`).forEach(li => li.remove());
-    if (library.length === 0) {
+
+    if (filteredLibrary.length === 0) {
         emptyState.classList.remove('hidden');
-        return;
+    } else {
+        emptyState.classList.add('hidden');
     }
-    emptyState.classList.add('hidden');
     if (view === 'grid') {
         container.classList.add('books-grid');
         container.classList.remove('books-list');
@@ -170,7 +189,8 @@ export function renderLibrary(view = getDefaultSettings().viewMode) {
         container.classList.add('books-list');
         container.classList.remove('books-grid');
     }
-    library.forEach(book => {
+
+    filteredLibrary.forEach(book => {
         const li = document.createElement('li');
         li.classList.add('book-card');
 
