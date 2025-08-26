@@ -24,6 +24,11 @@
         height: 1em;   
     }
 
+    .modal .close-btn img {
+        width: auto;
+        height: 1em;
+    }
+
     .search-box input {
         padding: 1rem 1rem;
     }
