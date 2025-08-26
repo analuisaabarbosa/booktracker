@@ -14,6 +14,11 @@ closeAddModal.addEventListener('click', () => {
     addBookModal.close();
 })
 
+function saveViewPreference(view) {
+    localStorage.setItem('viewMode', view);
+    renderLibrary();
+}
+
 export function initEvents() {
     // --- pesquisa ---
     const searchInput = document.getElementById('searchInput');
@@ -42,14 +47,10 @@ export function initEvents() {
 
     // --- toggle view ---
     const viewsButton = document.querySelectorAll('.view-btn');
-
     viewsButton.forEach(btn => {
         btn.addEventListener('click', () => {
-            viewsButton.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            renderLibrary(btn.dataset.view);
-        })
+            saveViewPreference(btn.dataset.view);
+        });
     });
 
     // --- modal de deleção ---

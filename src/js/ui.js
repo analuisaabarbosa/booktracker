@@ -160,10 +160,13 @@ export function closeDeleteModal() {
     bookToDeleteId = null;
 }
 
-export function renderLibrary(view = getDefaultSettings().viewMode) {
+export function renderLibrary() {
     const library = loadLibrary();
     const container = document.getElementById('booksContainer');
     const emptyState = document.getElementById('emptyState');
+
+    const savedView = localStorage.getItem('viewMode');
+    const view = savedView || getDefaultSettings().viewMode;
 
     const filteredLibrary = library.filter(book => {
         if (currentFilter === 'read') {
@@ -235,4 +238,13 @@ export function renderLibrary(view = getDefaultSettings().viewMode) {
         container.appendChild(li);
     });
     renderStats();
+
+    const viewsButton = document.querySelectorAll('.view-btn');
+    viewsButton.forEach(btn => {
+        if (btn.dataset.view === view) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
 }
