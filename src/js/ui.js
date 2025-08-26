@@ -182,15 +182,17 @@ export function renderLibrary() {
 
     if (filteredLibrary.length === 0) {
         emptyState.classList.remove('hidden');
-    } else {
-        emptyState.classList.add('hidden');
-    }
-    if (view === 'grid') {
-        container.classList.add('books-grid');
+        container.classList.remove('books-grid');
         container.classList.remove('books-list');
     } else {
-        container.classList.add('books-list');
-        container.classList.remove('books-grid');
+        emptyState.classList.add('hidden');
+        if (view === 'grid') {
+            container.classList.add('books-grid');
+            container.classList.remove('books-list');
+        } else {
+            container.classList.add('books-list');
+            container.classList.remove('books-grid');
+        }
     }
 
     filteredLibrary.forEach(book => {
