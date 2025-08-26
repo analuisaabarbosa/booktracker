@@ -7,6 +7,21 @@ const addBookModal = document.getElementById('addBookModal');
 const searchResults = document.getElementById('searchResults');
 const searchInput = document.getElementById('searchInput');
 
+export function renderStats() {
+    const library = loadLibrary();
+
+    const totalBooks = library.length;
+    const booksRead = library.filter(book => book.isRead).length;
+    const booksToRead = totalBooks - booksRead;
+
+    const progress = totalBooks > 0 ? ((booksRead / totalBooks) * 100).toFixed(0) : 0;
+
+    document.getElementById('totalBooksNumber').textContent = totalBooks;
+    document.getElementById('booksReadNumber').textContent = booksRead;
+    document.getElementById('booksToReadNumber').textContent = booksToRead;
+    document.getElementById('readingProgressNumber').textContent = `${progress}%`;
+}
+
 export function toggleReadStatus(bookId) {
     const updatedBook = toggleReadStatusInStorage(bookId);
 
@@ -198,5 +213,6 @@ export function renderLibrary(view = getDefaultSettings().viewMode) {
         deleteBtn.addEventListener('click', () => confirmDeleteBook(book.id));
 
         container.appendChild(li);
-    })
+    });
+    renderStats();
 }
