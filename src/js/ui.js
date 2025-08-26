@@ -1,4 +1,4 @@
-import { loadLibrary, addBookToLibrary, removeBookFromLibrary, updateBookInLibrary, getDefaultSettings } from './storage.js';
+import { loadLibrary, addBookToLibrary, removeBookFromLibrary, updateBookInLibrary, getDefaultSettings, toggleReadStatusInStorage } from './storage.js';
 
 let bookToEditId = null;
 let bookToDeleteId = null;
@@ -6,6 +6,20 @@ let bookToDeleteId = null;
 const addBookModal = document.getElementById('addBookModal');
 const searchResults = document.getElementById('searchResults');
 const searchInput = document.getElementById('searchInput');
+
+export function toggleReadStatus(bookId) {
+    const updatedBook = toggleReadStatusInStorage(bookId);
+
+    if (updatedBook) {
+        if (updatedBook.isRead) {
+            alert(`"${updatedBook.title}" marcado como lido!`)
+        } else {
+            alert(`"${updatedBook.title}" marcado como a ler!`)
+        }
+    }
+
+    renderLibrary();
+}
 
 export function createBookInSearch(book) {
     const card = document.createElement('div');
@@ -144,6 +158,10 @@ export function renderLibrary(view = getDefaultSettings().viewMode) {
     library.forEach(book => {
         const li = document.createElement('li');
         li.classList.add('book-card');
+
+        const readBtnText = book.isRead ? 'Não lido' : 'Marcar como lido';
+        const readBtnClass = book.isRead ? 'btn-unread' : 'btn-read';
+
         li.innerHTML = `
             <div class="book-cover-container"> 
                 <img src="${book.thumbnail}" alt="${book.title}" class="book-cover"  />
@@ -154,9 +172,9 @@ export function renderLibrary(view = getDefaultSettings().viewMode) {
                 <p class="book-description">${book.description || ''}</p>
                 <span class="book-genre">${book.categories[0]}</span>
                 <div class="book-actions">
-                    <button class="btn-read">
+                    <button class="${readBtnClass}">
                         <img src="./src/assets/icons/check-solid-full.svg" />
-                        Marcar como lido
+                        ${readBtnText}
                     </button>
                     <button class="btn-edit">
                         <img src="./src/assets/icons/pen-to-square-solid-full.svg" />
@@ -169,6 +187,9 @@ export function renderLibrary(view = getDefaultSettings().viewMode) {
                 </div >
             </div >
         `
+
+        const readBtn = li.querySelector('.btn-read, .btn-unread');
+        readBtn.addEventListener('click', () => toggleReadStatus(book.id));
 
         const editBtn = li.querySelector('.btn-edit');
         editBtn.addEventListener('click', () => editBook(book.id));

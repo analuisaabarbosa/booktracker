@@ -24,11 +24,23 @@ export function addBookToLibrary(book) {
         description: book.description || 'Sem descrição disponível',
         categories: book.categories || ['Gênero desconhecido'],
         thumbnail: book.imageLinks?.thumbnail || 'https://via.placeholder.com/100x150?text=No+Cover',
-        addedAt: Date.now()
+        addedAt: Date.now(),
+        isRead: false
     }
     library.push(bookToAdd);
     saveLibrary(library);
     return bookToAdd;
+}
+
+export function toggleReadStatusInStorage(bookId) {
+    let library = loadLibrary();
+    const bookIndex = library.findIndex(book => book.id === bookId);
+    if (bookIndex !== -1) {
+        library[bookIndex].isRead = !library[bookIndex].isRead;
+        saveLibrary(library);
+        return library[bookIndex];
+    }
+    return null;
 }
 
 export function removeBookFromLibrary(bookId) {
