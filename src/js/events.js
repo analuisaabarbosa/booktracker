@@ -1,7 +1,7 @@
 import { searchBook } from './api.js';
 import { renderLibrary, createBookInSearch, saveEditedBook, closeEditModal, deleteBook, closeDeleteModal, filterLibrary } from './ui.js';
 
-// --- abrir / fechar modal de adicionar livro --- 
+// --- add book modals event ---
 const addBookBtn = document.getElementById('addBookBtn');
 const addBookModal = document.getElementById('addBookModal');
 const closeAddModal = document.getElementById('closeAddModal');
@@ -14,13 +14,15 @@ closeAddModal.addEventListener('click', () => {
     addBookModal.close();
 })
 
+// --- saves the user's view preference (grid or list) in the browser's local storage ---
 function saveViewPreference(view) {
     localStorage.setItem('viewMode', view);
     renderLibrary();
 }
 
+// --- main function that initializes all events on the page ---
 export function initEvents() {
-    // --- pesquisa ---
+    // --- book search logic ---
     const searchInput = document.getElementById('searchInput');
     const searchBtn = document.getElementById('searchBtn');
     const searchResults = document.getElementById('searchResults');
@@ -45,7 +47,7 @@ export function initEvents() {
         });
     });
 
-    // --- toggle view ---
+    // ---  toggling view logic ---
     const viewsButton = document.querySelectorAll('.view-btn');
     viewsButton.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -53,7 +55,7 @@ export function initEvents() {
         });
     });
 
-    // --- modal de deleção ---
+    // --- delete modal logic ---
     const confirmDeleteBtn = document.getElementById('confirmDelete');
     const cancelDeleteBtn = document.getElementById('cancelDelete');
     const closeDeleteModalBtn = document.getElementById('closeDeleteModal');
@@ -64,7 +66,7 @@ export function initEvents() {
         closeDeleteModalBtn.addEventListener('click', closeDeleteModal);
     }
 
-    // --- modal de edição ---
+    // --- edit modal logic ---
     const saveEditBtn = document.getElementById('saveEdit');
     const cancelEditBtn = document.getElementById('cancelEdit');
     const closeEditModalBtn = document.getElementById('closeEditModal');
@@ -75,7 +77,7 @@ export function initEvents() {
         closeEditModalBtn.addEventListener('click', closeEditModal);
     }
 
-    // --- filtros de exibição ---
+    // --- library display filter logic ---
     const filterButtons = document.querySelectorAll('.filter-btn');
 
     filterButtons.forEach(btn => {

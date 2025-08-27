@@ -1,9 +1,11 @@
+/* basic reset to remove default browser margins and paddings */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* main styles for the page body */
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -12,11 +14,13 @@ body {
     min-height: 100vh;
 }
 
+/* main container to center the content */
 .container {
     max-width: 1200px;
     margin: 0 auto;
 }
 
+/* header styles */
 .header {
     background: #FFFFFF;
     border-radius: 0 0 2rem 2rem;
@@ -48,6 +52,7 @@ body {
     height: 3em;   
 }
 
+/* main button in the header (shared with .btn-primary) */
 .add-book-btn, .btn-primary {
     background: linear-gradient(45deg, #FF6B9D, #E91E63);
     color: #FFFFFF;
@@ -74,10 +79,12 @@ body {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 
+/* main content styles */
 main {
     padding: 2rem 1.5rem;
 }
 
+/* statistics section */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -93,16 +100,6 @@ main {
     position: relative;
     overflow: hidden;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.stat-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(45deg #FF6B9D, #8E44AD);
 }
 
 .stat-card:hover {
@@ -131,6 +128,7 @@ main {
     right: 1.5rem;
 }
 
+/* filters section */
 .filters {
     display: flex;
     gap: 1rem;
@@ -165,6 +163,8 @@ main {
     height: 2em;
 }
 
+/* book library styles */
+/* library header */
 .library-header {
     display: flex;
     justify-content: space-between;
@@ -213,6 +213,7 @@ main {
     height: 2em;
 }
 
+/* books container */
 .books-container {
     min-height: 400px;
 }
@@ -229,6 +230,7 @@ main {
     gap: 1rem;
 }
 
+/* individual book card */
 .book-card {
     background: #FFFFFF;
     border-radius: 16px;
@@ -297,6 +299,7 @@ main {
     margin-bottom: 1.5rem;
 }
 
+/* action buttons inside the card (read, edit, delete) */
 .book-actions {
     display: flex;
     gap: 0.5rem;
@@ -349,7 +352,7 @@ main {
     opacity: 0.9;
 }
 
-/*list view styles*/
+/* specific styles for list view */
 .books-list .book-card {
     display: flex;
     flex-direction: row;
@@ -373,7 +376,7 @@ main {
     padding: 0;
 }
 
-/*empty state*/
+/*empty state (when there are no books) */
 .empty-state {
     display: flex; 
     flex-direction: column; 
@@ -410,7 +413,8 @@ main {
     margin-bottom: 3rem;
 }
 
-/*modal style*/
+/* modal style */
+/* base styles for the <dialog> element */
 dialog {
     padding: 0;
     border: none;
@@ -431,6 +435,7 @@ dialog[open] {
     height: 100%;
 }
 
+/* darkened background behind the modal */
 dialog::backdrop {
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(5px);
@@ -496,7 +501,7 @@ dialog::backdrop {
     background: linear-gradient(45deg, #FF6B9D, #E91E63);
 }
 
-/* search section */
+/* search section inside modal */
 .search-box {
     display: flex;
     margin-bottom: 1.5rem;
@@ -537,7 +542,7 @@ dialog::backdrop {
     background: #E91E63;
 }
 
-/*search results section*/
+/* search results section */
 .search-results {
     max-height: 400px;
     overflow-y: auto;
@@ -581,11 +586,11 @@ dialog::backdrop {
 
 .search-result-description {
     display: -webkit-box;
-    -webkit-line-clamp: 5; /*número de linhas para exibir*/
-    line-clamp: 5; /*número de linhas para exibir*/
+    -webkit-line-clamp: 5; 
+    line-clamp: 5; 
     -webkit-box-orient: vertical;
     overflow: hidden;
-    text-overflow: ellipsis; /*adiciona os '...' no final do texto truncado*/
+    text-overflow: ellipsis; 
 }
 
 .add-result-btn {
@@ -604,7 +609,7 @@ dialog::backdrop {
     margin-right: 0;
 }
 
-/* button styles */
+/* generic button styles */
 .btn-secondary {
     background: #FFFFFF;
     color: #7F8C8D;

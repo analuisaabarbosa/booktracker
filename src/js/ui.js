@@ -1,19 +1,24 @@
 import { loadLibrary, addBookToLibrary, removeBookFromLibrary, updateBookInLibrary, getDefaultSettings, toggleReadStatusInStorage } from './storage.js';
 
+// --- these variables temporarily store the ID of the book being acted upon by a moda ---
 let bookToEditId = null;
 let bookToDeleteId = null;
 
+// --- references to frequently used DOM elements ---
 const addBookModal = document.getElementById('addBookModal');
 const searchResults = document.getElementById('searchResults');
 const searchInput = document.getElementById('searchInput');
 
+// --- stores the currently active filter for the library view ('all', 'read', 'unread') --- 
 let currentFilter = 'all';
 
+/// --- updates the current filter and triggers a re-render of the library ---
 export function filterLibrary(filter) {
     currentFilter = filter;
     renderLibrary();
 }
 
+// --- updates the current filter and triggers a re-render of the library ---
 export function renderStats() {
     const library = loadLibrary();
 
@@ -29,6 +34,7 @@ export function renderStats() {
     document.getElementById('readingProgressNumber').textContent = `${progress}%`;
 }
 
+// --- handles the click event to toggle a book's read status ---
 export function toggleReadStatus(bookId) {
     const updatedBook = toggleReadStatusInStorage(bookId);
 
@@ -43,6 +49,7 @@ export function toggleReadStatus(bookId) {
     renderLibrary();
 }
 
+// --- creates and returns a DOM element for a single book in the search results ---
 export function createBookInSearch(book) {
     const card = document.createElement('div');
     card.classList.add('search-result');
@@ -100,6 +107,7 @@ export function createBookInSearch(book) {
     return card;
 }
 
+// --- populates the edit modal with a book's current data and displays it ---
 export function editBook(bookId) {
     const editModal = document.getElementById('editBookModal');
     const book = loadLibrary().find(b => b.id === bookId);
@@ -114,6 +122,7 @@ export function editBook(bookId) {
     }
 }
 
+// --- saves the changes from the edit modal ---
 export function saveEditedBook() {
     const title = document.getElementById('editTitle').value;
     const authors = document.getElementById('editAuthor').value.split(',').map(s => s.trim());
@@ -134,18 +143,21 @@ export function saveEditedBook() {
     }
 }
 
+// --- closes the edit modal and resets the state ---
 export function closeEditModal() {
     const editModal = document.getElementById('editBookModal');
     editModal.close();
     bookToEditId = null;
 }
 
+// --- shows the delete confirmation modal ---
 export function confirmDeleteBook(bookId) {
     const deleteModal = document.getElementById('deleteModal');
     bookToDeleteId = bookId;
     deleteModal.showModal();
 }
 
+// --- deletes the book after confirmation ---
 export function deleteBook() {
     if (bookToDeleteId !== null) {
         removeBookFromLibrary(bookToDeleteId);
@@ -154,12 +166,14 @@ export function deleteBook() {
     }
 }
 
+// --- closes the delete modal and resets the state ---
 export function closeDeleteModal() {
     const deleteModal = document.getElementById('deleteModal');
     deleteModal.close();
     bookToDeleteId = null;
 }
 
+// --- renders the entire book library to the DOM based on the current filter and view mode ---
 export function renderLibrary() {
     const library = loadLibrary();
     const container = document.getElementById('booksContainer');

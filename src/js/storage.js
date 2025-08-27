@@ -1,14 +1,18 @@
+// --- a constant for the localStorage key ---
 const STORAGE_KEY = 'myLibrary';
 
+// --- saves the entire library array to localStorage ---
 export function saveLibrary(library) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(library));
 }
 
+// --- loads the library from localStorage ---
 export function loadLibrary() {
     const data = localStorage.getItem(STORAGE_KEY);
     return data ? JSON.parse(data) : [];
 }
 
+// --- add a new book to the library ---
 export function addBookToLibrary(book) {
     const library = loadLibrary();
     const bookId = book.id || book.title + (book.authors?.[0] || '');
@@ -32,6 +36,7 @@ export function addBookToLibrary(book) {
     return bookToAdd;
 }
 
+// --- toggle the 'isRead' status of a specific book in the library ---
 export function toggleReadStatusInStorage(bookId) {
     let library = loadLibrary();
     const bookIndex = library.findIndex(book => book.id === bookId);
@@ -43,6 +48,7 @@ export function toggleReadStatusInStorage(bookId) {
     return null;
 }
 
+// --- removes a book from the library ---
 export function removeBookFromLibrary(bookId) {
     let library = loadLibrary();
     const initialLength = library.length;
@@ -55,6 +61,7 @@ export function removeBookFromLibrary(bookId) {
     return false;
 }
 
+// --- updates an existing book's properties in the library ---
 export function updateBookInLibrary(updatedBook) {
     let library = loadLibrary();
     const bookIndex = library.findIndex(book => book.id === updatedBook.id);
@@ -67,6 +74,7 @@ export function updateBookInLibrary(updatedBook) {
     return false
 }
 
+// --- returns a default settings object for the application ---
 export function getDefaultSettings() {
     return {
         viewMode: 'grid', // 'grid' or 'list'
