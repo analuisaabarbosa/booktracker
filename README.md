@@ -39,15 +39,34 @@ Para ter uma cópia local do projeto rodando em sua máquina, siga estas etapas:
 ```
     
 3. Inicie um servidor local:
-Como o projeto usa módulos JavaScript, ele precisa ser servido por um servidor web. Você pode usar extensões como Live Server no VS Code ou iniciar um servidor simples com o Nginx:
+Como o projeto usa módulos JavaScript, ele precisa ser servido por um servidor web. Você pode usar extensões como Live Server no VS Code ou iniciar um servidor simples como:
 ```bash
-  # Se você tem Nginx instalado
-  start nginx
+  # Para Python 3
+  python -m http.server 8000
 ```
 Após iniciar o servidor, abra seu navegador e acesse http://localhost:8000.
 
-### Ou, se você preferir testar a versão em produção, pode usar o link de deploy:
-Acesse a aplicação diretamente pelo GitHub Pages: [BookTracker](https://analuisaabarbosa.github.io/booktracker/).
+### Executando com Docker
+Se você tem o Docker instalado, pode construir e rodar a aplicação em um contêiner Nginx de forma simples e isolada.
+
+1. Construa a imagem Docker:
+Na raiz do projeto (onde o 'Dockerfile' se encontra), execute o comando abaixo. Isso irá criar uma imagem chamada 'booktracker-app'.
+```bash
+  docker build -t booktracker-app .
+```
+
+2. Execute o contêiner:
+Após a imagem ser construída, inicie um contêiner a partir dela:
+```bash
+  docker run -d -p 8080:80 --name booktracker booktracker-app
+```
+
+**-d:** Executa o contêiner em segundo plano.
+**-p 8080:80:** Mapeia a porta 8080 do seu computador para a porta 80 do contêiner.
+**--name booktracker:** Dá um nome amigável ao contêiner.
+
+### Acesso à Versão de Produção
+Se preferir não instalar nada, você pode testar a versão em produção, hospedada no GitHub Pages: [BookTracker](https://analuisaabarbosa.github.io/booktracker/).
 
 
 Uso
