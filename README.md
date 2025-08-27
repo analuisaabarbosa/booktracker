@@ -50,20 +50,26 @@ Após iniciar o servidor, abra seu navegador e acesse http://localhost:8000.
 Se você tem o Docker instalado, pode construir e rodar a aplicação em um contêiner Nginx de forma simples e isolada.
 
 1. Construa a imagem Docker:
-Na raiz do projeto (onde o 'Dockerfile' se encontra), execute o comando abaixo. Isso irá criar uma imagem chamada 'booktracker-app'.
+
+Na raiz do projeto (onde o `Dockerfile` se encontra), execute o comando abaixo. Isso irá criar uma imagem chamada `booktracker-app`.
+
 ```bash
   docker build -t booktracker-app .
 ```
 
 2. Execute o contêiner:
+
 Após a imagem ser construída, inicie um contêiner a partir dela:
+
 ```bash
   docker run -d -p 8080:80 --name booktracker booktracker-app
 ```
 
-**-d:** Executa o contêiner em segundo plano.
-**-p 8080:80:** Mapeia a porta 8080 do seu computador para a porta 80 do contêiner.
-**--name booktracker:** Dá um nome amigável ao contêiner.
+* `-d:` Executa o contêiner em segundo plano.
+  
+* `-p 8080:80:` Mapeia a porta 8080 do seu computador para a porta 80 do contêiner.
+
+* `--name booktracker:` Dá um nome amigável ao contêiner.
 
 ### Acesso à Versão de Produção
 Se preferir não instalar nada, você pode testar a versão em produção, hospedada no GitHub Pages: [BookTracker](https://analuisaabarbosa.github.io/booktracker/).
