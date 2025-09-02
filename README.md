@@ -1,151 +1,143 @@
-BookTracker
-===========
+# BookTracker 
 
-Uma aplicação web para gerenciar sua biblioteca de livros pessoais.
+![Status do Projeto](https://img.shields.io/badge/status-ativo-yellowgreen)
+![Licença](https://img.shields.io/badge/license-MIT-blue)
 
-Descrição do Projeto
---------------------
+Uma aplicação web para gerenciar sua biblioteca de livros pessoais, com busca via API do Google Books e persistência de dados no localStorage.
 
-O BookTracker é uma aplicação web simples e intuitiva que permite aos usuários catalogar, acompanhar e organizar seus livros. O projeto foi desenvolvido com o objetivo de oferecer uma solução leve e eficaz para quem deseja manter o controle de sua leitura, sem a necessidade de contas de usuário ou bancos de dados complexos, utilizando o localStorage do navegador para persistência de dados.
+---
+### Acesso ao Projeto (Live Demo)
 
-### Funcionalidades Principais:
+O projeto está no ar e pode ser acessado através do GitHub Pages. Clique no botão abaixo para ver a aplicação em funcionamento:
 
-*   **Adicionar Livros:** Adicione novos livros à sua biblioteca pesquisando por título, autor ou ISBN, utilizando a API do Google Books.
-    
-*   **Gestão de Estado:** Marque livros como "Lidos" ou "A Ler" para acompanhar seu progresso.
-    
-*   **Estatísticas Dinâmicas:** Visualize estatísticas em tempo real sobre sua biblioteca, incluindo total de livros, livros lidos, a ler e seu progresso geral.
-    
-*   **Edição e Exclusão:** Edite os detalhes de qualquer livro em sua coleção ou remova-o da biblioteca.
-    
-*   **Visualização Flexível:** Alterne entre a visualização em grade (grid) ou lista (list) e salve sua preferência no navegador.
-    
-*   **Filtros de Exibição:** Filtre sua biblioteca para exibir todos os livros, apenas os lidos, ou apenas os que ainda não foram lidos.
-    
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=github&logoColor=white)](https://analuisaabarbosa.github.io/booktracker/)
 
-Instalação e Configuração
--------------------------
-
-Para ter uma cópia local do projeto rodando em sua máquina, siga estas etapas:
-
-1. Clone o repositório: 
-```bash
-  git clone https://github.com/analuisaabarbosa/booktracker.git
-```
-
-2. Navegue até o diretório do projeto:
-```bash
-  cd booktracker
-```
-    
-3. Inicie um servidor local:
-Como o projeto usa módulos JavaScript, ele precisa ser servido por um servidor web. Você pode usar extensões como Live Server no VS Code ou iniciar um servidor simples como:
-```bash
-  # Para Python 3
-  python -m http.server 8000
-```
-Após iniciar o servidor, abra seu navegador e acesse http://localhost:8000.
-
-### Executando com Docker
-Se você tem o Docker instalado, pode construir e rodar a aplicação em um contêiner Nginx de forma simples e isolada.
-
-1. Construa a imagem Docker:
-
-Na raiz do projeto (onde o `Dockerfile` se encontra), execute o comando abaixo. Isso irá criar uma imagem chamada `booktracker-app`.
-
-```bash
-  docker build -t booktracker-app .
-```
-
-2. Execute o contêiner:
-
-Após a imagem ser construída, inicie um contêiner a partir dela:
-
-```bash
-  docker run -d -p 8080:80 --name booktracker booktracker-app
-```
-
-* `-d:` Executa o contêiner em segundo plano.
-  
-* `-p 8080:80:` Mapeia a porta 8080 do seu computador para a porta 80 do contêiner.
-
-* `--name booktracker:` Dá um nome amigável ao contêiner.
-
-### Acesso à Versão de Produção
-Se preferir não instalar nada, você pode testar a versão em produção, hospedada no GitHub Pages: [BookTracker](https://analuisaabarbosa.github.io/booktracker/).
-
-
-Uso
 ---
 
-O uso do BookTracker é intuitivo. A interface permite que você adicione, edite, exclua e filtre livros de forma simples.
+### Índice
 
-Tecnologias Utilizadas
-----------------------
+* [Descrição do Projeto](#-descrição-do-projeto)
+* [Funcionalidades](#-funcionalidades)
+* [Tecnologias Utilizadas](#-tecnologias-utilizadas)
+* [Como Executar o Projeto](#-como-executar-o-projeto)
+* [Estrutura do Projeto](#-estrutura-do-projeto)
+* [Como Contribuir](#-como-contribuir)
+* [Autor](#-autor)
+* [Licença](#-licença)
 
-Este projeto foi construído utilizando as seguintes tecnologias:
+---
 
-*   **HTML5:** Para a estrutura e semântica da aplicação.
-    
-*   **CSS3:** Para a estilização e responsividade da interface.
-    
-*   **JavaScript (ES6):** Para a lógica da aplicação, manipulação do DOM e gestão de dados.
-    
-*   **API:** Google Books API (para a busca de livros).
-    
-*   **Armazenamento Local:** localStorage do navegador (para persistência de dados).
-    
+### Descrição do Projeto
 
-Estrutura do Projeto
---------------------
+O BookTracker é uma aplicação web simples e intuitiva que permite aos usuários catalogar, acompanhar e organizar seus livros. O projeto foi desenvolvido com o objetivo de oferecer uma solução leve e eficaz para quem deseja manter o controle de sua leitura, sem a necessidade de contas de usuário ou bancos de dados complexos, utilizando o `localStorage` do navegador para persistência de dados.
 
-A estrutura de arquivos e pastas do projeto é a seguinte:
+---
 
+### Funcionalidades
+
+- **Adicionar Livros via API:** Pesquise por título, autor ou ISBN e adicione novos livros à sua biblioteca utilizando a API do Google Books.
+- **Gestão de Estado:** Marque livros como "Lidos" ou "A Ler" para acompanhar seu progresso.
+- **Estatísticas Dinâmicas:** Visualize dados em tempo real sobre sua biblioteca, incluindo total de livros, livros lidos, a ler e seu progresso geral.
+- **Edição e Exclusão:** Edite os detalhes de qualquer livro ou remova-o da sua coleção.
+- **Visualização Flexível:** Alterne entre a visualização em grade (grid) ou lista (list) com sua preferência salva no navegador.
+- **Filtros de Exibição:** Filtre sua biblioteca para exibir todos os livros, apenas os lidos ou os que ainda estão na sua lista de leitura.
+
+---
+
+### Tecnologias Utilizadas
+
+- **Front-end:**
+  - `HTML5` 
+  - `CSS3` 
+  - `JavaScript (ES6)` 
+- **APIs e Armazenamento:**
+  - `Google Books API` 
+  - `Browser localStorage` 
+- **Deploy:**
+  - `Nginx`
+  - `Docker`
+
+---
+
+### Como Executar o Projeto
+
+Para ter uma cópia local do projeto rodando em sua máquina, siga as opções abaixo.
+
+#### Pré-requisitos
+
+- [Git](https://git-scm.com/)
+- [Docker](https://www.docker.com/products/docker-desktop/) 
+
+#### Executando com Docker 
+
+1.  **Clone o repositório:**
+    ```bash
+    git clone [https://github.com/analuisaabarbosa/booktracker.git](https://github.com/analuisaabarbosa/booktracker.git)
+    ```
+
+2.  **Navegue até o diretório do projeto:**
+    ```bash
+    cd booktracker
+    ```
+
+3.  **Construa a imagem Docker:**
+    *Este comando cria uma imagem chamada `booktracker-app` contendo a aplicação e o servidor Nginx.*
+    ```bash
+    docker build -t booktracker-app .
+    ```
+
+4.  **Execute o contêiner:**
+    *Este comando inicia um contêiner em segundo plano (`-d`) e mapeia a porta 8080 do seu computador para a porta 80 do contêiner (`-p 8080:80`).*
+    ```bash
+    docker run -d -p 8080:80 --name booktracker booktracker-app
+    ```
+
+5.  **Acesse a aplicação:**
+    Abra seu navegador e acesse [http://localhost:8080](http://localhost:8080).
+
+---
+### Estrutura do Projeto
 ```
 booktracker/
-├── .gitignore           # Ignora arquivos e pastas indesejadas no Git
-├── src/
-│   ├── assets/
-│   │   └── icons/       # Ícones e imagens do projeto
+├── .gitignore
+├── assets/
+│   ├── icons/  
 │   ├── css/
-│   │   ├── styles.css   # Folha de estilo principal
-│   │   └── mediaQueries.css  # Estilos para responsividade
+│   │   ├── styles.css
+│   │   └── mediaQueries.css
 │   └── js/
-│       ├── main.js      # Ponto de entrada da aplicação
-│       ├── ui.js        # Funções para manipulação da interface (DOM)
-│       ├── events.js    # Funções para gerenciar eventos do usuário
-│       ├── storage.js   # Funções para gerenciar o localStorage
-│       └── api.js       # Funções para interagir com a API do Google Books
-├── index.html           # Página principal da aplicação
+│       ├── main.js
+│       ├── ui.js
+│       ├── events.js
+│       ├── storage.js
+│       └── api.js
+├── index.html
 └── README.md
 ```
 
-Contribuição
-------------
+---
+
+### Como Contribuir
 
 Contribuições são bem-vindas! Para contribuir com o BookTracker, por favor, siga os passos abaixo:
 
-1.  Faça um fork do projeto.
-    
-2.  Crie uma nova branch (git checkout -b feature/sua-feature).
-    
-3.  Faça suas alterações e commit as mudanças (git commit -m 'feat: Adiciona nova funcionalidade').
-    
-4.  Envie suas mudanças para a sua branch (git push origin feature/sua-feature).
-    
-5.  Abra um Pull Request.
-    
+1.  Faça um **Fork** do projeto.
+2.  Crie uma nova **Branch** (`git checkout -b feature/sua-feature`).
+3.  Faça suas alterações e realize o **Commit** (`git commit -m 'feat: Adiciona nova funcionalidade'`).
+4.  Envie suas mudanças para a sua branch (`git push origin feature/sua-feature`).
+5.  Abra um **Pull Request**.
 
-Licença
--------
+---
 
-Este projeto está licenciado sob a licença [MIT](https://www.google.com/search?q=https://github.com/analuisaabarbosa/book_tracker/blob/main/LICENSE).
+### Autor
 
-Contato
--------
+Feito por **Ana Luisa**.
 
-Se você tiver alguma dúvida, sugestão ou feedback, sinta-se à vontade para entrar em contato:
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/analuisaabarbosa/)
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:analuisaaugustob@gmail.com)
 
-*   **Linkedln:** [analuisaabarbosa](https://www.linkedin.com/in/analuisaabarbosa/)
-    
-*   **Email:** analuisaaugustob@gmail.com
+---
+
+### Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](https://github.com/analuisaabarbosa/booktracker/blob/main/LICENSE) para mais detalhes.
