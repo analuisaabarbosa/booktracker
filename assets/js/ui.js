@@ -78,7 +78,7 @@ export function createBookInSearch(book) {
     genre.textContent = (book.categories && book.categories[0]) || 'Gênero desconhecido';
 
     const plusIcon = document.createElement('img');
-    plusIcon.src = './src/assets/icons/plus-solid-full.svg';
+    plusIcon.src = './assets/icons/plus-solid-full.svg';
     plusIcon.alt = 'Adicionar';
 
     const addBtnSearch = document.createElement('button');
@@ -227,15 +227,15 @@ export function renderLibrary() {
                 <span class="book-genre">${book.categories[0]}</span>
                 <div class="book-actions">
                     <button class="${readBtnClass}">
-                        <img src="./src/assets/icons/check-solid-full.svg" />
+                        <img src="./assets/icons/check-solid-full.svg" />
                         ${readBtnText}
                     </button>
                     <button class="btn-edit">
-                        <img src="./src/assets/icons/pen-to-square-solid-full.svg" />
+                        <img src="./assets/icons/pen-to-square-solid-full.svg" />
                         Editar
                     </button >
                     <button class="btn-delete">
-                        <img src="./src/assets/icons/trash-solid-full.svg" />
+                        <img src="./assets/icons/trash-solid-full.svg" />
                         Deletar
                     </button>
                 </div >

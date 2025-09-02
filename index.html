@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookTracker</title>
-    <link rel="stylesheet" href="./src/css/styles.css">
-    <link rel="stylesheet" href="./src/css/mediaQueries.css">
-    <link rel="shortcut icon" href="./src/assets/icons/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/mediaQueries.css">
+    <link rel="shortcut icon" href="./assets/icons/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -15,11 +15,11 @@
     <header class="header">
         <div class="container">
             <h1 class="logo">
-                <img src="./src/assets/icons/book-open-solid-full.svg" alt="">
+                <img src="./assets/icons/book-open-solid-full.svg" alt="">
                 BookTracker
             </h1>
             <button class="add-book-btn" id="addBookBtn">
-                <img src="./src/assets/icons/plus-solid-full.svg" alt="">
+                <img src="./assets/icons/plus-solid-full.svg" alt="">
                 Adicionar Livro
             </button>
         </div>
@@ -32,28 +32,28 @@
                     <h3 class="stat-number" id="totalBooksNumber">0</h3>
                     <p class="stat-label">Total Livros</p>
                     <div class="stat-icon">
-                        <img src="./src/assets/icons/book-solid-full.svg" alt="">
+                        <img src="./assets/icons/book-solid-full.svg" alt="">
                     </div>
                 </article>
                 <article class="stat-card">
                     <h3 class="stat-number" id="booksReadNumber">0</h3>
                     <p class="stat-label">Livros Lidos</p>
                     <div class="stat-icon">
-                        <img src="./src/assets/icons/circle-check-solid-full.svg" alt="">
+                        <img src="./assets/icons/circle-check-solid-full.svg" alt="">
                     </div>
                 </article>
                 <article class="stat-card">
                     <h3 class="stat-number" id="booksToReadNumber">0</h3>
                     <p class="stat-label">A ler</p>
                     <div class="stat-icon">
-                        <img src="./src/assets/icons/clock-solid-full.svg" alt="">
+                        <img src="./assets/icons/clock-solid-full.svg" alt="">
                     </div>
                 </article>
                 <article class="stat-card">
                     <h3 class="stat-number" id="readingProgressNumber">0%</h3>
                     <p class="stat-label">Progresso</p>
                     <div class="stat-icon">
-                        <img src="./src/assets/icons/chart-pie-solid-full.svg" alt="">
+                        <img src="./assets/icons/chart-pie-solid-full.svg" alt="">
                     </div>
                 </article>
             </div>
@@ -61,15 +61,15 @@
         <!--nav filters-->
         <nav class="filters" aria-label="Filter Books">
             <button class="filter-btn active" data-filter="all">
-                <img src="./src/assets/icons/list-solid-full.svg" alt="">
+                <img src="./assets/icons/list-solid-full.svg" alt="">
                 Todos os livros
             </button>
             <button class="filter-btn" data-filter="read">
-                <img src="./src/assets/icons/check-solid-full.svg" alt="">
+                <img src="./assets/icons/check-solid-full.svg" alt="">
                 Lidos
             </button>
             <button class="filter-btn" data-filter="unread">
-                <img src="./src/assets/icons/bookmark-solid-full.svg" alt="">
+                <img src="./assets/icons/bookmark-solid-full.svg" alt="">
                 A ler
             </button>
         </nav>
@@ -79,22 +79,22 @@
                 <h2>Minha biblioteca</h2>
                 <div class="view-toggle" role="group" aria-label="Toggle View">
                     <button class="view-btn active" data-view="grid" title="Grid View">
-                        <img src="./src/assets/icons/grip-solid-full.svg" alt="">
+                        <img src="./assets/icons/grip-solid-full.svg" alt="">
                     </button>
                     <button class="view-btn" data-view="list" title="List View">
-                        <img src="./src/assets/icons/list-solid-full.svg" alt="">
+                        <img src="./assets/icons/list-solid-full.svg" alt="">
                     </button>
                 </div>
             </header>
             <ul class="books-container" id="booksContainer">
                 <li class="empty-state" id="emptyState">
                     <div class="empty-icon">
-                        <img src="./src/assets/icons/book-open-solid-full-grey.svg" alt="">
+                        <img src="./assets/icons/book-open-solid-full-grey.svg" alt="">
                     </div>
                     <h3>Sua biblioteca está vazia</h3>
                     <p>Começe a montar sua coleção adicionando seu primeiro livro!</p>
                     <button class="btn-primary" onclick="document.getElementById('addBookBtn').click()">
-                        <img src="./src/assets/icons/plus-solid-full.svg" alt="">
+                        <img src="./assets/icons/plus-solid-full.svg" alt="">
                         Adicione seu primeiro livro
                     </button>
                 </li>
@@ -106,13 +106,13 @@
         <article class="modal-content">
             <header class="modal-header">
                 <div class="header-left">
-                    <img src="./src/assets/icons/magnifying-glass-solid-full.svg" alt="">
+                    <img src="./assets/icons/magnifying-glass-solid-full.svg" alt="">
                 </div>
                 <h2 id="addBookTitle">
                     Adicionar novo livro
                 </h2>
                 <button class="close-btn" id="closeAddModal" aria-label="Close Add Book Modal">
-                    <img src="./src/assets/icons/x-solid-full.svg" alt="">
+                    <img src="./assets/icons/x-solid-full.svg" alt="">
                 </button>
             </header>
             <section class="modal-body">
@@ -120,7 +120,7 @@
                     <form class="search-box" role="search">
                         <input type="text" id="searchInput" placeholder="Procure por livro, título, autor, ou ISBN...">
                         <button class="search-btn" id="searchBtn" type="submit">
-                            <img src="./src/assets/icons/magnifying-glass-solid-full-white.svg" alt="Pesquisar">
+                            <img src="./assets/icons/magnifying-glass-solid-full-white.svg" alt="Pesquisar">
                         </button>
                     </form>
                     <div class="loading" id="searchLoading" hidden>
@@ -138,11 +138,11 @@
             <article class="modal-content">
                 <header class="modal-header">
                     <h2 id="editBookTitle">
-                        <img src="./src/assets/icons/pen-to-square-solid-full-dark.svg" alt="">
+                        <img src="./assets/icons/pen-to-square-solid-full-dark.svg" alt="">
                         Editar livro
                     </h2>
                     <button class="close-btn" id="closeEditModal" aria-label="Close Edit Book Modal">
-                        <img src="./src/assets/icons/x-solid-full.svg" alt="">
+                        <img src="./assets/icons/x-solid-full.svg" alt="">
                     </button>
                 </header>
                 <section class="modal-body">
@@ -173,11 +173,11 @@
                         </div>
                         <footer class="form-actions">
                             <button type="button" class="btn-secondary" id="cancelEdit">
-                                <img src="./src/assets/icons/x-solid-full-grey.svg" alt="">
+                                <img src="./assets/icons/x-solid-full-grey.svg" alt="">
                                 Cancelar
                             </button>
                             <button type="button" class="btn-primary" id="saveEdit">
-                                <img src="./src/assets/icons/floppy-disk-solid-full.svg" alt="">
+                                <img src="./assets/icons/floppy-disk-solid-full.svg" alt="">
                                 Salvar
                             </button>
                         </footer>
@@ -192,7 +192,7 @@
             <article class="modal-content small">
                 <header class="modal-header">
                     <h2 id="deleteBookTitle">
-                        <img src="./src/assets/icons/trash-solid-full-dark.svg" alt="">
+                        <img src="./assets/icons/trash-solid-full-dark.svg" alt="">
                         Deletar livro
                     </h2>
                     <button class="close-btn" id="closeDeleteModal" aria-label="Close Delete Modal">
@@ -203,11 +203,11 @@
                     <p>Tem certeza que deseja remover esse livro da sua biblioteca? Essa ação não pode ser desfeita.</p>
                     <footer class="form-actions">
                         <button type="button" class="btn-secondary" id="cancelDelete">
-                            <img src="./src/assets/icons/x-solid-full-grey.svg" alt="">
+                            <img src="./assets/icons/x-solid-full-grey.svg" alt="">
                             Cancelar
                         </button>
                         <button type="button" class="btn-danger" id="confirmDelete">
-                            <img src="./src/assets/icons/trash-solid-full.svg" alt="">
+                            <img src="./assets/icons/trash-solid-full.svg" alt="">
                             Deletar
                         </button>
                     </footer>
@@ -215,7 +215,7 @@
             </article>
         </div>
     </dialog>
-    <script type="module" src="src/js/main.js"></script>
+    <script type="module" src="assets/js/main.js"></script>
 </body>
 
 </html>
