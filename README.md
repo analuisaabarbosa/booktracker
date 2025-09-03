@@ -72,7 +72,7 @@ Para ter uma cópia local do projeto rodando em sua máquina, siga as opções a
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/analuisaabarbosa/booktracker.git](https://github.com/analuisaabarbosa/booktracker.git)
+    git clone https://github.com/analuisaabarbosa/booktracker.git
     ```
 
 2.  **Navegue até o diretório do projeto:**
