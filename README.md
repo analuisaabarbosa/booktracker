@@ -16,13 +16,13 @@ O projeto está no ar e pode ser acessado através do GitHub Pages. Clique no bo
 
 ### Índice
 
-* [Descrição do Projeto](#-descrição-do-projeto)
-* [Funcionalidades](#-funcionalidades)
-* [Tecnologias Utilizadas](#-tecnologias-utilizadas)
-* [Como Executar o Projeto](#-como-executar-o-projeto)
-* [Estrutura do Projeto](#-estrutura-do-projeto)
-* [Como Contribuir](#-como-contribuir)
-* [Autor](#-autor)
+* [Descrição do Projeto](#descrição-do-projeto)
+* [Funcionalidades](#funcionalidades)
+* [Tecnologias Utilizadas](#tecnologias-utilizadas)
+* [Como Executar o Projeto](#como-executar-o-projeto)
+* [Estrutura do Projeto](#estrutura-do-projeto)
+* [Como Contribuir](#como-contribuir)
+* [Autor](#autor)
   
 ---
 
