@@ -1,6 +1,6 @@
 # BookTracker 
 
-![Status do Projeto](https://img.shields.io/badge/status-ativo-yellowgreen)
+![Status do Projeto](https://img.shields.io/badge/status-concluído-green)
 ![Licença](https://img.shields.io/badge/license-MIT-blue)
 
 Uma aplicação web para gerenciar sua biblioteca de livros pessoais, com busca via API do Google Books e persistência de dados no localStorage.
@@ -23,8 +23,7 @@ O projeto está no ar e pode ser acessado através do GitHub Pages. Clique no bo
 * [Estrutura do Projeto](#-estrutura-do-projeto)
 * [Como Contribuir](#-como-contribuir)
 * [Autor](#-autor)
-* [Licença](#-licença)
-
+  
 ---
 
 ### Descrição do Projeto
